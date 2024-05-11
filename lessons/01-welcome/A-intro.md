@@ -3,8 +3,6 @@ title: "Intro"
 description: "Brian Holt introduces you to himself, the Complete Intro to React version 6, and what you can expect to learn"
 ---
 
-![Javascript logo](./images/course-icon.png)
-
 ## What is Javascript ?
 
 Javascript is a lightweit interpreted [(JIT "just in time" compiled)][jit] language with [first class functions][fcf]. Javascript is [prototype-based][pb] , [single-threaded][st] , [dynamic language][dl].
