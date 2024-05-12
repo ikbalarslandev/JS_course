@@ -3,26 +3,31 @@ title: "Memory Management"
 description: "Brian Holt introduces you to himself, the Complete Intro to React version 6, and what you can expect to learn"
 ---
 
-Javascript engine has two different places to store memory.
+Javascript motoru verileri hafızata tutmak için iki adet alan kullanır:
 
 - stack
 - heap
 
-> javascript only can comunicate with stack memory.
+> Javascript sadece stack ile iletişime geçebilir.
 
-Data Types:
+Veri tipleri ikiye ayrılır:
 
-- Primitive types: primitive types stored directly in the stack
-  - String,Number,Boolean,Null,Undefined,Symbol,BigInt
-- Referance types: Stored in the heap and accesed by reference from Stack
-  - Arrays , Functions , Objects
+- ilkel tipler: direk olarak stack içerisinde tutulur.
 
----
+  - String,Number,Boolean,Undefined,Symbol,BigInt
 
-For low level languages you should free up memory manually
+- referans tipler: heap içerisinde tutulur stack içerisinde bulunan referanslarla iletişime geçer.
+
+  - Array , Function , Object
+
+  ![memory image](./images/memory.png)
+
+## Garbage Collector
+
+Düşük seviyeli programlama dillerinde manuel olarak hafızayı temizlemeniz gerekir.
 
 - C , C++
 
-For Higher level languages memory frees automatically when they are not used anymore. this process called _garbage collection_
+Yüksek seviyeli dillerde ise kullanılmayan veriler otomatik olarak silinir. bu işleme garbage collection (Çöp toplama) denir.
 
 - Javascript , Python , C#

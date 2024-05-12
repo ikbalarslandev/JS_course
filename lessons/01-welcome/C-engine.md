@@ -3,26 +3,34 @@ title: "Javascript Engine"
 description: "Brian Holt introduces you to himself, the Complete Intro to React version 6, and what you can expect to learn"
 ---
 
-if you run any javascript source code . It always the engine that runs it for you. It doesn't matter if you run it in the browser or nodeJS or an IoT device.
+## Javascript motoru
 
-> V8 is javascript engine for crome
+Eğer bir javascript kodunu çalıştırmak istiyorsanız . Bunu sizin için Javascript motoru yapar. Kodu nerede çalıştırırsanız çalıştırın tarayıcı , nodeJS , mikroişlemci bu değişmeyecektir.
 
-javascript is dynamically typed language so we expect it to be slow. right?
+> V8 crome içerisinde bulunan Javascript motorunun adı.
 
-#### but javascript is really fast , How is that possible?
+javascript dinamik bir dil bu yüzden yavaş olmasını bekleriz değil mi ?
+
+_Fakat_ Javascript oldukça hızlı , bu nasıl mümkün olabilir ?
 
 - all modern javascript engines use something called _JIT(Just in time compilation)_
   JIT generate machine code during run time, not _AOT(ahead of time)_
 
-- for optimizing they use two compilers
-  - _baseline compiler ( V8 uses Ignition):_ it is regular compiler that generates machine code.
-  - _optimizing compiler (V8 uses turbofan):_ saves the type information for "hot" functions
+  Tüm modern Javascript motorları [JIT][jit] (Just in Time compilation) kullanıyor. JIT kod çalışırken aynı anda makine kodlarını üretir. Bu sayede kod oldukça hızlı çalışır.
 
-since javascript is dynamically typing language we don't know the types when user enters. so compiler needs to find the types each time.
+  makine kodlarını üretirken daha hızlı çalışmak için iki adet dönüştürücü kullanırlar:
 
-for optimization we use optimizing compiler which does:
+  - _baseline compiler (V8 Ignition kullanır):_ makine diline dönüştürür.
+  - _optimizing compiler (V8 turbofan kullanır):_ fazla kullanılan değişkenlerin veri tipi bilgisini hafızada tutar.
 
-- Re-compile: (if it is hot or used a lot) "hot" functions with type information from previous execution
-- De-optimize: since javascript dynamically typed language , when the type changes remove it .
+Javascript dinamik bir dil olduğundan dolayı, değişkenin veri tipini bilemeyiz. bu sebeple dönüştürücü her defasında veri tipini bulmak zorundadır.
 
-> if we don't change the types optimizing compiler can remember the types for the same functions so code can be faster
+bu durumu hızlandırmak için optimize edici dönüştürücü kullanırız.
+optimize edici dönüştürücü iki şey yapar:
+
+- Re-compile: eğer bir değişken sıkça kullanılıyorsa o değişkenin veri tipini hafızaya kaydeder.
+- De-optimize: eğer sıkça kullanılan değişkenin veri tipini değiştirirsek. o değişken için hafızada kaydedilen veri tipini hafızadan siler.
+
+> Eğer kodun hızlı çalışmasını istiyorsak değişkenin veri tipini _değiştirmemeliyiz_
+
+[jit]: https://en.wikipedia.org/wiki/Just-in-time_compilation
