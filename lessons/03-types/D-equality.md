@@ -5,17 +5,17 @@ description: "Brian Holt introduces you to himself, the Complete Intro to React 
 
 ## == vs. ===
 
-`==` allows coercion (types different will work)
-`===` disallows coercion ( types has to be same)
+`==` coerciona izin verir (farklı veri tiplerine izin verir)
+`===` coercionu kabul etmez (veri tipleri aynı olmak zorunda)
 
-#### `==` algorithm:
+#### `==` algoritması:
 
-- if the types are same : `===`
-- if `null` or `undefinded`:equal
-- if non-primitives: ToPrimitive
-- if two different primitives converts them to number then compare.
+- veri tipleri aynı ise: `===`
+- `null` ve `undefinded` birbirine eşittir.
+- eğer referans tip ise: ToPrimitive
+- eğer iki farklı ilkel tipi karşılaştırmak istersek ikisini de numbera donuşturup daha sonra karşılaştırır.
 
-#### Corner cases of ==
+#### == Açıkları
 
 ```
 [] == ![]   //true  What!!
@@ -33,17 +33,17 @@ if(workshop1Students != workshop2Students){
 ```
 
 ```
-if(workshop1students != workshop2Students){
-\\if([] == false){
-\\if("" == false){
-\\if(0 == false){
-\\if(0 === 0){
+if(workshop1students != workshop2Students)
+\\if([] == false)
+\\if("" == false)
+\\if(0 == false)
+\\if(0 === 0)
 
 // true
 
 ```
 
-boolean corner case
+boolean açığı
 
 ```
 var workshopStudents = [];
@@ -53,28 +53,24 @@ if(workshopStudents){
 }
 
 if(workshopStudents == true){
-//nope  :(
+//nope  :
 }
 
 if(workshopStudents == false){
-// yep  :(
+// yep  :
 }
-
 
 ```
 
-> for Avoiding corner cases
+> Açıkları minimuma indirmek için
 
-- `==` with 0 or ""(or even " ")
-- `==` with non-primitives
-- `== true` or `== false`
+- `0` ve `""`ve `" "` kullanma
+- referans tiplerle kullanma
+- `== true` veya `== false` kullanma
 
-what should you use for equality.
+peki eşitlikleri nasıl kullanmalıyız.
 
-- You should always prefer double equals everytime.
-- when the types are same double equals will convert to triple equals anyway.
-
-Summary:
-if you know the types use `==` if not use `===`
+- Mumkun olan her yerde `==` kullanmalıyız.
+- Eğer veri tipleri eşitse `==` , zaten `===` e donusucek.
 
 > Object.is() is acts like quadriple equals.

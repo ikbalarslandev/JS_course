@@ -3,11 +3,11 @@ title: "Abstract Operations"
 description: "Brian Holt introduces you to himself, the Complete Intro to React version 6, and what you can expect to learn"
 ---
 
-## typeof operator
+## typeof
 
-when we assign any value to a variable, we are not asking what is the type of the variable we are asking what is the type of value which is currently set to variable.
+`typeof` fonksyonunu kullanarak değişken içerisinde bulunan değerin tipini string olarak yazdırabiliriz.
 
-all the 6 primitive types are:
+6 ilkel tipini typeof ile yazdıralım.
 
 ```
 var v;
@@ -24,40 +24,36 @@ v = Symbol();
 typeof v;                         // "symbol"
 ```
 
-> the result of the typeof operator always is a string , it guarantees that it always return a string.
+> `typeof` sonucu her zaman `string` olarak verir.
 
-> if you want to unset a primitive type value you will set `undefined` but if you want to unset an referance type you will set `null` because of that type of null is object.
+> Eğer ilkel bir tipi silmek isterseniz yerine `undefined` yazmalısınız. eğer referans tipi silmek isterseniz yerine `null` yazmalısınız.
 
-## Kinds of Emptyness
+## Boş Değer Varyasyonları
 
-### undefined vs. undeclared vs. uninitialized
+_undeclared_: bu değişken erişimimiz olan hiçbir yerde hiçbir zaman oluşturulmadı.
 
-undeclared: it means never been created in any scope that we have access to.
+_undefined_: bu değişken kesinlikle bir değere sahip fakat şimdilik değeri yok.
 
-undefined: it means there is definitly a variable and at the moment it has no value.
-
-uninitialized: when a variable in TDZ(temporal dead zone) we didn't read the variable yet.
+_uninitialized_: bu değişken TDZ(temporal dead zone) içerisinde yani, henüz treat of execution bu değişkeni okumadı.
 
 ## NaN & isNaN(not a number)
 
-NaN is a type what we get if we try to do math operation with not a number it will return not a number.
+Eğer sayı olmayan bir değişken ile matemetik operasyonu yaparsak sonuç `NaN` olur.
 
-NaN is the only value which is not equal to itself.
+> NaN kendine eşit olmayan tek değerdir.
 
-so for checking if something is nan we can't use `something === NaN` because even if it is equal to NaN it wont be equal to itself .
+NaN kendine eşit değil bu sebeple`something === NaN` kullanarak eşitliği ölçemeyiz. Bu sebeple NaN olup olmadığını kontrol etmek için `isNaN()` kullanırız.
 
-so for checking nan we should use `isNaN()` to check nan.
+Otomatik olarak `isNaN()` içerisindeki değeri sayıya çevirir daha sonra NaN olup olmadığını kontrol eder.
 
-as defalult NaN will convert argument to a number then check the NaN.
+Eğer değeri sayıya çevirmesini istemiyorsak onun yerine `Number.isNaN()` kullanabilirsiniz. bu fonksyon değişkeni direkt olarak kontrol eder.
 
-we can use `Number.isNaN()` instead so it won't convert the argument . it will directly check if it is nan or not.
-
-> typeof NaN is number . it is just invalid number. type of invalid number definetly is a number.
+> typeof NaN cevabı Number olarak gelir.
 
 ```
 var myAge = 38;                           // 38
 var myNextAge = 39;                       // 39
-var catsAge = "hello";                    // NaN
+var catsAge = "hello";                    // "hello"
 
 catsAge - "my son's age";                 // NaN
 

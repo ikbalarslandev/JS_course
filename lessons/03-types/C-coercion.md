@@ -3,29 +3,36 @@ title: "Coercion"
 description: "Brian Holt introduces you to himself, the Complete Intro to React version 6, and what you can expect to learn"
 ---
 
-In Javascript we name type conversion as _coercion_
+Javascript içerisinde veri tiplerini birbirine dönüştürmeye _coercion_ denir.
 
-for converting types we use abstract operations.
+> değişken tiplerini birbirine çevirirken her zaman ilkel tipe çeviririz. asla referans tipe çeviremeyiz.
+
+değişkenlerin veri tiplerini birbirine çevirirken 4 adet fonksyon kullanırız
+
+- ToPrimitive(hint)
+- ToString()
+- ToNumber()
+- ToBoolean()
 
 ## ToPrimitive(hint)
 
-if we have something not primitive and want to convert it to primitive we always call that funciton in the background.
+Eğer referans tipi ilkel tipe çevirmek istiyorsak bu fonksyonu kullanmalıyız.
 
-it does takes an optional type hint. In another way it asks if it is not a primitive tell me which type you want as result.
+bu fonksyonu çağırırken opsyonel olarak hint değeri verebiliriz bu basitçe fonksyonun sonucu olarak hangi tipi istediğimizi gösterir.
 
-> when we call the function and the result is not primitive then it will call the same function with result until it get a primitive result or an error.
+> Eğer referans tipi bu fonksyonla çağırdıktan sonra cevap ilkel tip değilse sonucu aynı fonksyonun içerisine yazıp tekrar cağırır. sonuç ilkel tip olana kadar bu döngü devam eder.
 
-as a hint we can only use two thing `string` and `number`:
+hint olarak sadece iki değer verebiliriz. `string` ve `number`
 
-- if we give number as hint :
-  it will call `valueOf()` function first and it will check the result. if it gives primitive then we are done. if not it will pass result as argument to `toString()` if we try both of these and the result still not primitive then it will return an error.
+- eğer hint olarak number verirsek:
+  ilk olarak `valueOf()` fonksyonu çağırlır. eğer cevap ilkel tipse fonksyon burada sonlanır. değilse sonuç `toString()` içerisine yazılır.
 
-- if we give string as hint:
-  then we will change the order first we will call `toString` then we will call `valueOf()`
+- eğer hint olarak string verirsek:
+  ilk olarak `toString()` fonksyonu çağırlır. eğer cevap ilkel tipse fonksyon burada sonlanır. değilse sonuç `valueOf()` içerisine yazılır.
 
   ## ToString()
 
-  it takes any value and gives us representation of that value in string form.
+  bu fonksyon herhangi bir değeri yazı formuna dönüştürür.
 
 ```
 null  => "null"
@@ -34,7 +41,7 @@ undefined => "undefined"
 true => "true"
 ```
 
-> if we put a referance type in ToString it will call `ToPrimitive(hint)` automatically.
+> eğer bu fonksyon içerisine referans tip koyarsak otomatik olarak `ToPrimitive(string)`çağırılır.
 
 - ToString(Array)
 
@@ -46,7 +53,7 @@ true => "true"
 [...] => "..."
 ```
 
-when we convert arrays to string it removes `[]` and puts `""` instead.
+dizileri yazıya çevirirken `[]` silinir yerine `""` yazılır.
 
 - ToString(Object)
 
@@ -56,11 +63,11 @@ when we convert arrays to string it removes `[]` and puts `""` instead.
 {toString(){return "X";}}  => "X"
 ```
 
-when we convert objects to string it removes `{}` and it puts `"[]"`
+objeleri yazıya çevirirken`{}` silinir yerine `"[]"` yazılır.
 
 ## ToNumber()
 
-when we need to do something numeric and we don't have a number we are gonna invoke toNumber() operation
+numara olmayan bir değişken ile matematiksel işlem yaptığımızda bu fonksyon otomatik olarak çağırılır.
 
 ```
 "" => 0
@@ -74,7 +81,7 @@ null   => 0
 undefined  => NaN
 ```
 
-> if we put a referance type in ToNumber it will call `ToPrimitive(hint)` automatically.
+> eğer bu fonksyon içerisine referans tip koyarsak otomatik olarak `ToPrimitive(number)`çağırılır.
 
 - ToNumber(Array)
 
@@ -97,7 +104,7 @@ undefined  => NaN
 
 ## ToBoolean()
 
-if the value is on that list it will return false if not it will return true.
+eğer fonksyon içerisine aşşağıdaki değerlerden birini koyarsak sonuç false olur aksi taktirde sonuç true olur.
 
 - ""
 - 0
@@ -105,9 +112,11 @@ if the value is on that list it will return false if not it will return true.
 - false
 - undefined
 
+---
+
 # Boxing
 
-in javascript we can access properties from primitive values. it is happens because of _boxing_ it is a form of implicit coercion.
+javascript içerisinde ilkel tiplerde propertylere erişimimiz _boxing_ sayesinde sağlanır. bu otomatik coercion olarak bilinir.
 
 ```
 if(studentName.value.length > 50){
@@ -116,11 +125,11 @@ console.log("name too long")
 
 ```
 
-string is not an object but it can behave like an object.because of boxing.
+string , object olmamasına rağmen object gibi davranabildi. bu boxing sayesinde mümkün oldu.
 
-# Corner Cases
+# Coercion Açıkları
 
-every language has type conversion corner cases.
+her dil içerisinde dilin açıkları bulunur. buna javascrit de dahil. javascriptin coercion açıkları bu şekilde
 
 ```
 1 < 2 < 3;       //true
@@ -138,4 +147,4 @@ every language has type conversion corner cases.
 
 ```
 
-in this case 1 < 2 < 3 returned true by chance.
+burada 1 < 2 < 3 şans eseri doğru çıktı

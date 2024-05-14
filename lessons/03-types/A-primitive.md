@@ -1,11 +1,20 @@
 ---
-title: "Primitive Types"
+title: "Variable Types"
 description: "Brian Holt introduces you to himself, the Complete Intro to React version 6, and what you can expect to learn"
 ---
 
-In javascript variables don't have types, values do.
+## Variable Types
 
-We only have 6 different primitive types:
+Javascript dilinde değişkenlerin tipi yoktur. değişkenlerin sahip olduğu değerlerin tipi vardır.
+
+veri tipleri ikiye ayrılır:
+
+- ilkel tipler
+- referans tipler
+
+---
+
+Altı çeşit ilkel tip bulunmakta:
 
 - undefined
 - string
@@ -14,13 +23,13 @@ We only have 6 different primitive types:
 - symbol
 - bigInt
 
-> most of the things can behave like object
+Geriye kalan her tip referans tip olarak bilinir.
 
-objects:
+> tüm referans tipleri özünde `object` ten türetilmiştir.
+
+Referans tipler:
 
 - object
-- function (the type is function)
-- array
-- null
-
-any other type instead of primitive types are referance types.
+- function (veri tipi `function` "bug")
+- array (veri tipi `object`)
+- null (veri tipi `object`)
