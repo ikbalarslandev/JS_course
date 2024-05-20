@@ -12,4 +12,8 @@ kodları okurken bir fonksyon çalıştırılırsa. hemen bu fonksyon call stack
 
 call stack en altında herzaman global execution context bulunur.
 
+pratik yapmak için [bu siteyi][site] kullanabiliriz.
+
 ![callstack image](./images/callstack.jpg)
+
+[site]: http://latentflip.com/loupe/?code=Cgpjb25zb2xlLmxvZygiV2VsY29tZSB0byBsb3VwZS4iKTs%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
