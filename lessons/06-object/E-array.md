@@ -44,7 +44,11 @@ arraylarda key yerine index kelimesi kullanılır ve her zaman sıfırdan baslar
 
 arr[0] = "ikbal" seklinde cagirilir.
 
+> `...` spread operetörü ile array içindeki elementleri açabiliriz.
+
 ## methods
+
+> object içerisinde tanımlı olan fonksyonlara method denir.
 
 .push(),.pop(),.shift(),.unshift() methodları bulunur
 

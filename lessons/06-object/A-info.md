@@ -73,3 +73,5 @@ user.color = "blue";
 ```
 
 bu şekilde yeni key ekleyebiliriz.
+
+> Object içerisinde key olarak tanımladığımız fonksyonlara method denir.
